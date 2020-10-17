@@ -23,10 +23,10 @@ const Boton = styled.input`
   }
 `;
 
-const Formulario = () => {
+const Formulario = ({ guardarMoneda, guardarCriptomoneda }) => {
     
     //Listado de criptomonedas
-    const [ listacripto, guardarCriptomoneda] = useState([]);
+    const [ listacripto, guardarCriptomonedas] = useState([]);
     //Validacion
     const [ error, guardarError ] = useState(false);
 
@@ -46,7 +46,7 @@ const Formulario = () => {
         const consultarAPI = async () => {
             const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
             const resultado = await axios.get(url);
-            guardarCriptomoneda(resultado.data.Data);
+            guardarCriptomonedas(resultado.data.Data);
         }
         consultarAPI();
     }, []);
@@ -60,7 +60,9 @@ const Formulario = () => {
             guardarError(true);
             return;
         }
-        guardarCriptomoneda(false);
+        guardarError(false);
+        guardarMoneda(moneda);
+        guardarCriptomoneda(criptomoneda);
 
     }
     

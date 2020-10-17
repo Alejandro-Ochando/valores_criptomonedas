@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import imagen from './cryptomonedas.png';
 import Formulario from './components/Formulario';
@@ -37,6 +37,19 @@ const Heading = styled.h1`
 
 
 function App() {
+
+  const [ moneda, guardarMoneda ] = useState('');
+  const [ criptomoneda, guardarCriptomoneda ] = useState('');
+
+  useEffect( () => {
+    //Evitar la ejecucion la primera vez
+    if(moneda === '') return;
+    
+    console.log("convirtiendo...")
+
+  }, [moneda, criptomoneda]);
+
+
   return (
     <Contenedor>
       <div>
@@ -46,7 +59,10 @@ function App() {
       </div>
       <div>
         <Heading>Convertidor de Criptomonedas</Heading>
-        <Formulario />
+        <Formulario 
+          guardarMoneda={guardarMoneda}
+          guardarCriptomoneda={guardarCriptomoneda}
+        />
       </div>
     </Contenedor>
   );
