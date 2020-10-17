@@ -26,7 +26,8 @@ const Formulario = () => {
     
     //Listado de criptomonedas
     const [ listacripto, guardarCriptomoneda] = useState([]);
-
+    //Validacion
+    const [ error, guardarError ] = useState(false);
 
     const MONEDAS = [
         {codigo: 'EUR', nombre: 'Euro'},
@@ -49,10 +50,27 @@ const Formulario = () => {
         consultarAPI();
     }, []);
     
+    //Cando el usuario hace submit
+   
+    const convertirMoneda = e => {
+        e.preventDefault();
+
+        if(moneda.trim() === '' || criptomoneda.trim() === ''){
+            guardarError(true);
+            return;
+        }
+        guardarCriptomoneda(false);
+
+    }
+    
+
+
     return ( 
 
-        <form>
-            
+        <form
+            onSubmit={convertirMoneda}
+        >
+            {error ? 'Hay un Error' : null}
             <SelectMonedas />
             <SelectCriptomoneda />
             <Boton
