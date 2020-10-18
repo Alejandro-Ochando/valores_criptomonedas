@@ -17,7 +17,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Used API
 ```plain
-  null
+  https://min-api.cryptocompare.com
 ```
 
 ## Used Dependencies
