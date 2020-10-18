@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import axios from 'axios';
 import imagen from './cryptomonedas.png';
 import Formulario from './components/Formulario';
 
@@ -42,10 +43,18 @@ function App() {
   const [ criptomoneda, guardarCriptomoneda ] = useState('');
 
   useEffect( () => {
+    const calcularCriptomoneda = async () => {
+
     //Evitar la ejecucion la primera vez
     if(moneda === '') return;
     
-    console.log("convirtiendo...")
+    //Consultar API para la conversion
+    const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
+    const resultado = await axios.get(url);
+    console.log(resultado.data.DISPLAY[criptomoneda][moneda]);
+    }
+
+    calcularCriptomoneda();
 
   }, [moneda, criptomoneda]);
 
