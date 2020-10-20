@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import styled from '@emotion/styled';
 
+
 const Label = styled.label`
     font-family: 'bebas Neue', cursive;
     color: #fff;
@@ -18,11 +19,9 @@ const Select = styled.select`
     border-radius: 10px;
     border:none;
     font-size: 1.2rem;
-
 `;
 
 const useMoneda = ( label, stateInicial, opciones ) => {
-    
     //State de custom hook
     const [ state, actualizarState] = useState(stateInicial);
 
@@ -41,7 +40,7 @@ const useMoneda = ( label, stateInicial, opciones ) => {
         </Fragment>
     )
 
-    //retornar state, interfaz, y funcion que modifica
+    //Retornar state, interfaz, y funcion que modifica
     return [ state, Seleccionar, actualizarState ];
 }
  

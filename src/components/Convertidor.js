@@ -21,12 +21,10 @@ const Precio = styled.p`
 `;
 
 
-
 const Convertidor = ({ resultado }) => {
    
     if(Object.keys(resultado).length === 0) return null;
     return (
-        
         <Contenedor>
             <Precio>El precio es: <span>{resultado.PRICE}</span></Precio>
             <Info>Precio más alto del día: <span>{resultado.HIGHDAY}</span></Info>
@@ -34,7 +32,6 @@ const Convertidor = ({ resultado }) => {
             <Info>Variación últimas 24h: <span>{resultado.CHANGEPCT24HOUR}</span></Info>
             <Info>Última actualización: <span>{resultado.LASTUPDATE}</span></Info>
         </Contenedor>
-
      );
 }
 
