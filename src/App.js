@@ -4,6 +4,7 @@ import axios from 'axios';
 import imagen from './cryptomonedas.png';
 import Formulario from './components/Formulario';
 import Convertidor from './components/Convertidor';
+import Spinner from './components/Spinner';
 
 const Contenedor = styled.div`
   max-width: 900px;
@@ -43,6 +44,7 @@ function App() {
   const [ moneda, guardarMoneda ] = useState('');
   const [ criptomoneda, guardarCriptomoneda ] = useState('');
   const [ resultado, guardarResultado ] = useState({});
+  const [ cargando, guardarCargando ] = useState(false);
 
   useEffect( () => {
     const calcularCriptomoneda = async () => {
@@ -53,13 +55,20 @@ function App() {
     //Consultar API para la conversion
     const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
     const resultado = await axios.get(url);
-    guardarResultado(resultado.data.DISPLAY[criptomoneda][moneda]);
+    //Mostrando el Spinner
+    guardarCargando(true);
+     //Ocultar el Spinner y mostrar el resultado 
+    setTimeout(() => {
+      //Cambiar el estado del Spinner
+      guardarCargando(false);
+      //guardar la conversion
+      guardarResultado(resultado.data.DISPLAY[criptomoneda][moneda]);
+    }, 3000); 
     }
-
     calcularCriptomoneda();
-
   }, [moneda, criptomoneda]);
 
+  const componente = (cargando) ? <Spinner /> : <Convertidor resultado={resultado} />
 
   return (
     <Contenedor>
@@ -74,9 +83,7 @@ function App() {
           guardarMoneda={guardarMoneda}
           guardarCriptomoneda={guardarCriptomoneda}
         />
-        <Convertidor 
-          resultado={resultado}
-        />
+        {componente}
       </div>
     </Contenedor>
   );
