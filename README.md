@@ -2,7 +2,7 @@
 <img src="https://i.ibb.co/pPYfKM0/React.png" alt="React" border="0">
 <p>
 
-# Temp App  
+# Temp App  [![Netlify Status](https://api.netlify.com/api/v1/badges/5f44b9ba-f70e-4c4e-8de1-a9c9d9d953e6/deploy-status)](https://app.netlify.com/sites/convertidor-criptomonedas/deploys)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
