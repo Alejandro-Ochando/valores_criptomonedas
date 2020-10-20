@@ -11,8 +11,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## About 
 
->Project incompleted.
+>Project fully completed.
 
+This is my project made in React, ***it is functional on production lathes***.
+
+```plain
+Added currencies:
+
+Euro  €
+Dolar $
+Libra £
+Mexican peso $
+```
 
 
 ## Used API
