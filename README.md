@@ -15,6 +15,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This is my project made in React, ***it is functional on production lathes***.
 
+What this web application does is: choose a type of physical currency and tell us what is the equivalence of the chosen virtual currency.
+
 ```plain
 Added currencies:
 
